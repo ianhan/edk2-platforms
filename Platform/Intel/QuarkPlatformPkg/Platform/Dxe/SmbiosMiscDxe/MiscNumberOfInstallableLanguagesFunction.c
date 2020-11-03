@@ -46,7 +46,7 @@ CurrentLanguageMatch (
   }
 
   LangMatch = FALSE;
-  CurrentLang  = GetEfiGlobalVariable (L"PlatformLang");
+  GetEfiGlobalVariable2 (L"PlatformLang", (VOID **)&CurrentLang, NULL);
   DefaultLang  = (CHAR8 *) PcdGetPtr (PcdUefiVariableDefaultPlatformLang);
   BestLanguage = GetBestLanguage (
                    Languages,
@@ -224,7 +224,7 @@ MISC_SMBIOS_TABLE_FUNCTION(NumberOfInstallableLanguages)
   SmbiosRecord->Flags = (UINT8)ForType13InputData->LanguageFlags.AbbreviatedLanguageFormat;
   SmbiosRecord->CurrentLanguages = 1;
   OptionalStrStart = (CHAR8 *)(SmbiosRecord + 1);
-  AsciiStrCpy(OptionalStrStart, CurrentLang);
+  AsciiStrCpyS(OptionalStrStart, SMBIOS_STRING_MAX_LENGTH, CurrentLang);
   //
   // Now we have got the full smbios record, call smbios protocol to add this record.
   //
