@@ -540,6 +540,8 @@ INF  MdeModulePkg/Bus/Pci/PciSioSerialDxe/PciSioSerialDxe.inf
 #
 # USB
 #
+!if $(PERFORMANCE_ENABLE)	
+!else
 INF  MdeModulePkg/Bus/Pci/EhciDxe/EhciDxe.inf
 INF  QuarkSocPkg/QuarkSouthCluster/Usb/Ohci/Dxe/OhciDxe.inf
 INF  MdeModulePkg/Bus/Pci/UhciDxe/UhciDxe.inf
@@ -548,6 +550,7 @@ INF  MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf
 INF  MdeModulePkg/Bus/Usb/UsbKbDxe/UsbKbDxe.inf
 INF  MdeModulePkg/Bus/Usb/UsbMouseDxe/UsbMouseDxe.inf
 INF  MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf
+!endif
 
 #
 # SDIO
